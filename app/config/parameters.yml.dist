@@ -1,0 +1,19 @@
+parameters:
+    database_driver:   pdo_mysql
+    database_host:     127.0.0.1
+    database_port:     ~
+    database_name:     symfony
+    database_user:     root
+    database_password: root
+
+    mailer_transport:  smtp
+    mailer_host:       127.0.0.1
+    mailer_user:       ~
+    mailer_password:   ~
+
+    locale:            en
+    secret:            ThisTokenIsNotSoSecretChangeIt
+    facebook_app_id: 854908457858244
+    facebook_app_secret: 2a1884b3c4093a18094733d9355275da
+    google_app_id: 204864765480-1qodi5s5f7r5p1a4l4a3fmqnn46fk4dg.apps.googleusercontent.com
+    google_app_secret: OI5gZni_ZmdvyXnRGI_NjYrz

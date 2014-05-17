@@ -1,0 +1,76 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+{%block head%}
+{% block title %}EasyRoad {% endblock %}
+
+{%endblock%}
+
+{%block body%}
+  
+     
+    
+    <div class="map">
+    {{ google_map_container(map2) }}
+    </div>
+       
+    	{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+          <div class="box1" style=" position: absolute;  top: 71%;  right: 1%;  width: 28%; height: 8%;" data-toggle="modal" data-target="#myModal">
+            
+       
+             <a href="#">  <h3>add a trafficJam</h3></a>
+          </div>
+          
+          {% endif %}
+       
+            <div class="modal fade" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+       {{ form_start(form) }}
+      {{ form_errors(form) }}
+        <div>
+          {{ form_label(form.title) }}
+          {{ form_errors(form.title) }}
+          {{ form_widget(form.title) }}
+        </div>
+        <div>
+          {{ form_label(form.description) }}
+          {{ form_errors(form.description) }}
+          {{ form_widget(form.description) }}
+        </div>
+        <div>
+          {{ form_label(form.startingtime) }}
+          {{ form_errors(form.startingtime) }}
+          {{ form_widget(form.startingtime) }}
+        </div>
+        <div>
+          {{ form_label(form.endingtime) }}
+          {{ form_errors(form.endingtime) }}
+          {{ form_widget(form.endingtime) }}
+        </div>
+        <div>
+          {{ form_label(form.longitude) }}
+          {{ form_errors(form.longitude) }}
+          {{ form_widget(form.longitude) }}
+        </div>
+        <div>
+          {{ form_label(form.largitude) }}
+          {{ form_errors(form.largitude) }}
+          {{ form_widget(form.largitude) }}
+        </div>
+        
+
+        <div>
+          {{ form_widget(form.save) }}
+        </div>
+          {{ form_end(form) }}
+
+
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+        
+   
+{%endblock%}
+         {% block javascripts %}
+    {{ google_map_js(map2) }}
+            
+		{% endblock %}   

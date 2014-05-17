@@ -1,0 +1,22 @@
+services:
+    sonata.admin.categorie:
+        class: digit\synergyBundle\admin\AreaAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "area" }
+        arguments:
+            - ~
+            - digit\synergyBundle\Entity\Area
+            - ~
+        calls:
+            - [ setTranslationDomain, [digitsynergyBundle]]
+
+    sonata.admin.terrain:
+        class: digit\synergyBundle\admin\TypeAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Type" }
+        arguments:
+            - ~
+            - digit\synergyBundle\Entity\Type
+            - ~
+        calls:
+            - [ setTranslationDomain, [digitsynergyBundle]]

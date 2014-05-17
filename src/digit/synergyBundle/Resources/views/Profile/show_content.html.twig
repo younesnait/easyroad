@@ -1,0 +1,25 @@
+
+
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+
+
+
+
+
+
+<div class="fos_user_user_show">
+   
+
+   <table class="table table-hover">
+  <tr>
+  <td>{{ 'profile.show.username'|trans }}: </td><td>{{ user.username }}</td>
+  <tr> <td>{{ 'profile.show.email'|trans }}: </td><td> {{ user.email }} </td></tr>
+ 
+</tr>
+</table>
+<a href="{{ path('fos_user_profile_edit') }}" class="btn btn-default btn-lg active" role="button"> &nbsp; Edit &nbsp; </a>
+
+    
+</div>

@@ -1,0 +1,154 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+
+
+  
+
+{% block navbar %}
+{% endblock navbar %}
+
+
+  
+    {% block body %}
+    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}<script>window.location.replace("{{path('hello')}}");</script>{% endif %}
+            
+
+
+    <div class="container" >
+
+<center>
+<section class="demo-4">
+        
+        <div class="grid">
+          <div class="box">
+            
+          <a data-toggle="collapse" data-parent="#accordion" data-target="#login">  <h3>LOGIN</h3></a>
+            
+          </div>
+          
+          <div class="box">
+            
+            <a data-toggle="collapse" data-parent="#accordion" data-target="#signin"> <h3>SIGN-IN</h3></a>
+            
+          </div>
+        </div><!-- /grid -->
+      </section>
+</center>
+
+<div class="panel-group login " id="accordion">
+  <div class="panel panel-default">
+  <div id="login" class="panel-collapse collapse">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        LOGIN
+      </h4>
+    </div>
+      <div class="panel-body">
+        <form action="{{ path("fos_user_security_check") }}" method="post" class="form-horizontal " role="form">
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+    <div class="form-group">
+      <label class="col-sm-2 control-label">username</label>
+      <div class="col-sm-10">
+        <input id="username" name="_username" value="{{ last_username }}" required="required" type="text" class="form-control"  >
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-2 control-label">Password</label>
+      <div class="col-sm-10">
+        <input  type="password" id="password" name="_password" required="required" class="form-control" placeholder="Password">
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <div class="checkbox">
+          <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+         <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+      <button type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" class="btn btn-default" >LOGIN </button>
+        
+
+      </div>
+    </div>
+  </form>
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-default">
+  <div id="signin" class="panel-collapse collapse">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        SIGN IN
+      </h4>
+    </div>
+      <div class="panel-body">
+       
+    <div class="form-group">
+     <form action="{{ path("fos_user_registration_register") }}" method="POST"{{ form_enctype(form) }}   >
+    {{ form_widget(form) }}
+    <div>
+        <input type="submit" value="{{ 'registration.submit'|trans }}" />
+    </div>
+    </form>
+
+    </div>
+      </div>
+    </div>
+  </div>
+  
+</div>
+ 
+
+
+
+
+
+    
+      
+      
+      
+      
+      <section class="main">
+      
+        <ul class="ch-grid">
+          <li>
+            <div class="ch-item ch-img-1">
+              <div class="ch-info " >
+                <a href="{{ path('hwi_oauth_service_redirect', {'service': 'facebook' }) }}"><h3>login with facebook</h3>
+                </a>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="ch-item ch-img-2 ">
+              <div class="ch-info">
+                <a href="{{ path('hwi_oauth_service_redirect', {'service': 'google' }) }}" ><h3>login with google</h3>
+                </a>
+              </div>
+            </div>
+          </li>
+          
+        </ul>
+        
+      </section>
+      
+ 
+
+
+
+
+
+
+{% endblock body %}
+
+
+
+
+
+
+

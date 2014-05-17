@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    
+<title>
+    {% block title %}
+    Home
+    {% endblock title %}
+</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{{asset('css/offCanvas.css')}}" rel="stylesheet">
+    <link href="{{asset('css/mine.css')}}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{asset('css/demo.css')}}" />
+    <!--<link rel="stylesheet" type="text/css" href="{{asset('css/common.css')}}" />-->
+    <link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}" />
+    <script type="text/javascript" src="{{asset('js/modernizr.custom.79639.js')}}"></script> 
+
+    <!-- Just for debugging purposes. Don't actually copy this line! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="{{asset('js/jquery.js') }}"></script>
+    <script src="{{asset('js/bootstrap.js')}}"></script>
+    <script src="{{asset('js/offcanvas.js')}}"></script>
+    <div id="fb-root"></div>
+ 
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  </head>
+
+    <body>
+{% block navbar %}
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="{{path('hello')}}">
+          <img src="{{asset('icon.png')}}"/>
+          EasyRoad</a>
+        </div>
+
+        <div class="collapse navbar-collapse navbar-right">
+               
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="{{path('hello')}}">Home</a></li>
+            <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">tarfficJam <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">closest</a></li>
+            <li class="divider"></li>
+            <li><a href="#">by area</a></li>
+            <li class="divider"></li>
+            <li><a href="#">by type</a></li>
+          </ul>
+        </li>
+        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+        <li class="dropdown ">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">account <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="{{ path('fos_user_profile_show') }}">profile</a></li>
+            <li class="divider"></li>
+            <li><a href="{{ path('fos_user_resetting_request') }}">change password ?</a></li>
+            <li class="divider"></li>
+            <li><a href="{{ path('fos_user_security_logout') }}">logout</a></li>
+         </ul>
+            </li>
+            {% endif %}
+            
+             {% if is_granted("IS_AUTHENTICATED_REMEMBERED")==false %}
+          <li><a href="{{path('fos_user_security_login')}}">login</a></li>
+              {% endif %}
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+
+            {% if is_granted('ROLE_ADMIN') %} 
+            <li><a href="{{ path('sonata_admin_dashboard') }}">admin dashboard</a></li>
+            {% endif %}
+          
+           {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+          <li><a href="{{ path('fos_user_security_logout') }}" 
+          >
+                {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
+                
+                    {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                </a>
+            </li>
+            {% endif %}
+
+            <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+            </ul>
+
+        </div><!-- /.nav-collapse -->
+      </div><!-- /.container -->
+    </div><!-- /.navbar -->
+{% endblock navbar %}
+    
+
+        {% block fos_user_content %}
+        {% endblock fos_user_content %}
+        
+
+        
+         {% block body %}
+
+        {% endblock %}
+        {% block javascripts %}
+         
+        
+
+
+
+        {% endblock %}
+
+{% block fb %}
+<div style="position: absolute;  top: 80%;  right: 1%;  width: 28%; height: 8%;">
+<div class="fb-like" data-href="{{path(app.request.attributes.get('_route'))}}
+" data-width="455" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+</div>
+{% endblock %}       
+    </body>
+
+
+</html>
