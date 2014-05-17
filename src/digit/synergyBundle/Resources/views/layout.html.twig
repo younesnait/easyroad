@@ -62,7 +62,7 @@
             <span class="icon-bar"></span>
           </button>
           <a class="navbar-brand" href="{{path('hello')}}">
-          <img src="{{asset('icon.png')}}"/>
+          <img src="{{asset('images/icon.png')}}" style="width:8%; height:0.1%;"/>
           EasyRoad</a>
         </div>
 
@@ -141,7 +141,7 @@
         {% endblock %}
 
 {% block fb %}
-<div style="position: absolute;  top: 80%;  right: 1%;  width: 28%; height: 8%;">
+<div style="position: absolute;  top: 99%;  right: 1%;  width: 28%; height: 8%;">
 <div class="fb-like" data-href="{{path(app.request.attributes.get('_route'))}}
 " data-width="455" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
 </div>
