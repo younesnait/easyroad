@@ -16,7 +16,10 @@ READ ME
 			and when finished the commande ' composer update ' must be executed
 	Solution 2(the one we recommand):
 	
-	-unzip the containings of the Embouteillage.zip at  https://www.dropbox.com/sh/h588hf5lq4whc35/AAAr2gELj_PVf9kdA6E0MvFoa?lst in a folde named : Symfony ,inside www folder on your localhost make sure that the folder you create in your www is named: Symfony
+		-unzip the containings of the Embouteillage.zip at  
+https://www.dropbox.com/sh/h588hf5lq4whc35/AAAr2gELj_PVf9kdA6E0MvFoa?lst 
+in a folde named : Symfony ,inside www folder on your localhost
+make sure that the folder you create in your www is named: Symfony
 
 		
 -when above is done to verify the database configuration go into the file app/config/parameters.yml and edit if pasword isnt correct.
